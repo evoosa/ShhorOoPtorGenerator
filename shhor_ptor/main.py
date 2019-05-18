@@ -30,3 +30,6 @@ if __name__ == '__main__':
     # [print(i) for i in get_pixel_rows(img_obj)]
     b_rows = get_black_rows(get_pixel_rows(img_obj))
     b_columns = get_black_columns(get_pixel_columns(img_obj))
+
+    print(b_columns)
+    print(len(max(b_columns, key=len)))
