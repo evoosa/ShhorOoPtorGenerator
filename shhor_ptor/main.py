@@ -28,3 +28,5 @@ if __name__ == '__main__':
 
     # get pixel arrays from image
     pixel_arrays = get_pixel_arrays(img_obj)
+    for i in pixel_arrays:
+        print(i)
