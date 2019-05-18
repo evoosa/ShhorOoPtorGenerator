@@ -1,4 +1,5 @@
 from shhor_ptor.config import fill_chr
+from shhor_ptor.utils.get_pixels import *
 
 
 def fill_row(row, max_row_len, img_width):
@@ -27,6 +28,15 @@ def columns_to_rows(b_columns, max_row_len):
     return [(max_row_len * [fill_chr] + [col[j] for col in b_columns]) for j in range(longest_col_len)]
 
 
-def get_diagram(filled_rows):
+def get_diagram(img_obj):
     """ build a shhor-ptor diagram using the img_obj """
-    pass
+
+    # get the number of blacks in the rows and columns of the image
+    b_rows = get_black_rows(get_pixel_rows(img_obj))
+    b_columns = get_black_columns(get_pixel_columns(img_obj))
+
+    max_row_len = len(max(b_rows, key=len))
+    filled_coloumn_rows = columns_to_rows(b_rows, max_row_len) # columns who are converted to rows, in order to build the diagram
+    filled_rows = fill_rows(b_rows, img_obj.size[0])
+
+    return filled_coloumn_rows + filled_rows
