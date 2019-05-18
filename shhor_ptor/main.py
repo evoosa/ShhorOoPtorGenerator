@@ -5,6 +5,7 @@ from shhor_ptor.utils.convert_bw import convert_to_bw
 from shhor_ptor.utils.get_pixels import get_black_columns, get_black_rows, get_pixel_columns, get_pixel_rows
 from shhor_ptor.utils.misc import get_user_data
 from shhor_ptor.utils.resize import resize_img, resize_img_keep_ratio
+from shhor_ptor.utils.diagram import fill_rows
 
 if __name__ == '__main__':
 
@@ -31,5 +32,6 @@ if __name__ == '__main__':
     b_rows = get_black_rows(get_pixel_rows(img_obj))
     b_columns = get_black_columns(get_pixel_columns(img_obj))
 
-    print(b_columns)
-    print(len(max(b_columns, key=len)))
+    a = fill_rows(b_rows, img_obj.size[0])
+    for i in a:
+        print(i)
