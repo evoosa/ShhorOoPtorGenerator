@@ -1,6 +1,3 @@
-from PIL import Image
-
-
 def get_pixel_rows(img_obj):
     """ get arrays of the image pixels. each array is a horizontal line, from left to right """
     img_width = img_obj.size[0]
@@ -34,11 +31,3 @@ def get_black_columns(pixel_columns):
     get bw strings of the pixel columns of the image
     """
     return get_bws_from_pixel_array(pixel_columns)
-
-
-img = Image.open("c:\\temp\\done_dino.jpg")
-print(get_black_columns(get_pixel_columns(img)))
-
-
-def get_black_columns():
-    pass
