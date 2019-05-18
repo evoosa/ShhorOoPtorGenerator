@@ -11,7 +11,7 @@ def get_pixel_columns(img_obj):
     return [[pixel_rows[row_num][column_num] for row_num in range(len(pixel_rows))] for column_num in range(img_obj.size[0])]
 
 
-def get_bws_from_pixel_array(pixel_arrays):
+def _get_bws_from_pixel_array(pixel_arrays):
     """
     get bw strings of the pixel arrays
     [255, 255, 255, 0, 255, 0, 0] ---> "wwwbwbb" ---> ['b', 'bb'] ---> [1, 2]
@@ -23,11 +23,11 @@ def get_black_rows(pixel_rows):
     """
     get bw strings of the pixel rows of the image
     """
-    return get_bws_from_pixel_array(pixel_rows)
+    return _get_bws_from_pixel_array(pixel_rows)
 
 
 def get_black_columns(pixel_columns):
     """
     get bw strings of the pixel columns of the image
     """
-    return get_bws_from_pixel_array(pixel_columns)
+    return _get_bws_from_pixel_array(pixel_columns)
