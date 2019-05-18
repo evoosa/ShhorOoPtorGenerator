@@ -1,6 +1,7 @@
 from PIL import Image
 
-def get_pixel_arrays(img_obj):
+
+def get_pixel_rows(img_obj):
     """ get arrays of the image pixels. each array is a horizontal line, from left to right """
     img_width = img_obj.size[0]
     img_pixels = list(img_obj.getdata())
@@ -9,11 +10,34 @@ def get_pixel_arrays(img_obj):
 
 def get_pixel_columns(img_obj):
     """ get arrays of the image pixels. each array is a vertical line, from up to down """
-    pixel_arrays = get_pixel_arrays(img_obj)
-    return [[pixel_arrays[array_num][column_num] for array_num in range(len(pixel_arrays))] for column_num in range(img_obj.size[0])]
+    pixel_rows = get_pixel_rows(img_obj)
+    return [[pixel_rows[row_num][column_num] for row_num in range(len(pixel_rows))] for column_num in range(img_obj.size[0])]
 
-def get_black_arrays():
-    pass
+
+def get_bws_from_pixel_array(pixel_arrays):
+    """
+    get bw strings of the pixel arrays
+    [255, 255, 255, 0, 255, 0, 0] ---> "wwwbwbb" ---> ['b', 'bb'] ---> [1, 2]
+    """
+    return [[len(i) for i in (''.join([('w' if val == 255 else 'b') for val in row])).split('w') if i != ''] for row in pixel_arrays]
+
+
+def get_black_rows(pixel_rows):
+    """
+    get bw strings of the pixel rows of the image
+    """
+    return get_bws_from_pixel_array(pixel_rows)
+
+
+def get_black_columns(pixel_columns):
+    """
+    get bw strings of the pixel columns of the image
+    """
+    return get_bws_from_pixel_array(pixel_columns)
+
+
+img = Image.open("c:\\temp\\done_dino.jpg")
+print(get_black_columns(get_pixel_columns(img)))
 
 
 def get_black_columns():
