@@ -4,8 +4,10 @@ output_dir = "C:\\temp"
 
 img_name = "dino"
 
-img_file_name = "{}.jpg".format(img_name)
+input_img = "{}.jpg".format(img_name)
 
 output_img = "done_{}.png".format(img_name)
 
-input_img = join(output_dir, img_file_name)
+input_img_file = join(output_dir, input_img)
+
+output_img_file = join(output_dir, output_img)
