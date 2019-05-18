@@ -2,17 +2,16 @@ from PIL import Image
 
 from shhor_ptor import config
 from shhor_ptor.utils.convert_bw import convert_to_bw
-from shhor_ptor.utils.get_pixels import get_black_columns, get_black_rows, get_pixel_columns, get_pixel_rows
 from shhor_ptor.utils.misc import get_user_data
+from shhor_ptor.utils.plot import plot_shhor_ptor
 from shhor_ptor.utils.resize import resize_img, resize_img_keep_ratio
-from shhor_ptor.utils.diagram import get_diagram
 
 if __name__ == '__main__':
 
     # get user data
     user_data = get_user_data()
 
-    # get  Image object
+    # get Image object
     img_obj = Image.open(config.input_img_file)
 
     # resize
@@ -27,10 +26,5 @@ if __name__ == '__main__':
     # save image
     img_obj.save(config.output_img_file)
 
-    # get the number of blacks in the rows and columns of the image
-    # [print(i) for i in get_pixel_rows(img_obj)]
-    b_rows = get_black_rows(get_pixel_rows(img_obj))
-    b_columns = get_black_columns(get_pixel_columns(img_obj))
-
-    # get the shhor-ptor diagram
-    diagram = get_diagram(img_obj)
+    # plot the shhor-ptor diagram # TODO - HURRAY !
+    print(plot_shhor_ptor(img_obj))
