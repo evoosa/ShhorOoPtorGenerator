@@ -27,8 +27,8 @@ if __name__ == '__main__':
     img_obj.save(config.output_img_file)
 
     # get the number of blacks in the rows and columns of the image
-    [print(i) for i in get_pixel_rows(img_obj)]
-    # b_rows = get_black_rows(get_pixel_rows(img_obj))
-    # b_columns = get_black_columns(get_pixel_columns(img_obj))
-    #
-    # print(b_rows)
+    # [print(i) for i in get_pixel_rows(img_obj)]
+    b_rows = get_black_rows(get_pixel_rows(img_obj))
+    b_columns = get_black_columns(get_pixel_columns(img_obj))
+
+    print(b_rows)
