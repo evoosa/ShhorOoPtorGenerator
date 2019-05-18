@@ -36,7 +36,7 @@ def get_diagram(img_obj):
     b_columns = get_black_columns(get_pixel_columns(img_obj))
 
     max_row_len = len(max(b_rows, key=len))
-    filled_coloumn_rows = columns_to_rows(b_rows, max_row_len) # columns who are converted to rows, in order to build the diagram
+    filled_coloumn_rows = columns_to_rows(b_columns, max_row_len) # columns who are converted to rows, in order to build the diagram
     filled_rows = fill_rows(b_rows, img_obj.size[0])
 
     return filled_coloumn_rows + filled_rows
